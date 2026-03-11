@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, Menu, X } from 'lucide-react';
 import { businessInfo } from '../data/mock';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const Header: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,7 +17,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -78,9 +81,36 @@ const Header = () => {
             >
               Contacto
             </button>
+            
+            {user ? (
+              <>
+                <Link 
+                  to="/dashboard"
+                  className={`transition-colors duration-300 hover:text-[#6F4E37] ${
+                    isScrolled ? 'text-[#2A2A2A]' : 'text-white'
+                  }`}
+                >
+                  Mi Cuenta ({user.points} pts)
+                </Link>
+                <button 
+                  onClick={logout}
+                  className="flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-full hover:bg-red-700 transition-all duration-300"
+                >
+                  Salir
+                </button>
+              </>
+            ) : (
+              <Link 
+                to="/login"
+                className="flex items-center gap-2 bg-[#6F4E37] text-white px-5 py-2.5 rounded-full hover:bg-[#5a3e2a] transition-all duration-300 hover:shadow-lg"
+              >
+                Iniciar Sesión
+              </Link>
+            )}
+            
             <a 
               href={`tel:${businessInfo.phone.replace(/\s/g, '')}`}
-              className="flex items-center gap-2 bg-[#6F4E37] text-white px-5 py-2.5 rounded-full hover:bg-[#5a3e2a] transition-all duration-300 hover:shadow-lg"
+              className="flex items-center gap-2 bg-[#4A6B57] text-white px-5 py-2.5 rounded-full hover:bg-[#3d5a49] transition-all duration-300 hover:shadow-lg"
             >
               <Phone className="w-4 h-4" />
               <span className="font-medium">Llamar</span>

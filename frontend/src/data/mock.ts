@@ -1,6 +1,7 @@
 // Mock data for Nuna Coffee Shop
+import { BusinessInfo, Value, Specialty, MenuData, GalleryImage, Review } from '../types';
 
-export const businessInfo = {
+export const businessInfo: BusinessInfo = {
   name: "Nuna Coffee Shop",
   tagline: "Café de especialidad y brunch en Chamberí, Madrid",
   description: "Nuna Coffee Shop es una cafetería de especialidad ubicada en el barrio de Chamberí, Madrid. Nuestro objetivo es servir café excepcional preparado con cuidado, acompañado de brunch casero y dulces artesanales en un ambiente acogedor y tranquilo.",
@@ -24,7 +25,7 @@ export const businessInfo = {
   }
 };
 
-export const values = [
+export const values: Value[] = [
   {
     icon: "Coffee",
     title: "Café de especialidad",
@@ -42,7 +43,7 @@ export const values = [
   }
 ];
 
-export const specialties = [
+export const specialties: Specialty[] = [
   {
     category: "Café",
     image: "https://images.unsplash.com/photo-1708430651927-20e2e1f1e8f7",
@@ -60,7 +61,7 @@ export const specialties = [
   }
 ];
 
-export const menu = {
+export const menu: MenuData = {
   cafe: [
     { name: "Espresso", price: "2.00€" },
     { name: "Cappuccino", price: "3.20€" },
@@ -82,7 +83,7 @@ export const menu = {
   ]
 };
 
-export const gallery = [
+export const gallery: GalleryImage[] = [
   {
     url: "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     alt: "Latte art en Nuna Coffee Shop"
@@ -121,7 +122,7 @@ export const gallery = [
   }
 ];
 
-export const reviews = [
+export const reviews: Review[] = [
   {
     id: 1,
     name: "Eduardo",

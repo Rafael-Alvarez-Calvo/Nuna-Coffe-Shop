@@ -1,7 +1,7 @@
 import React from 'react';
 import { specialties } from '../data/mock';
 
-const Specialties = () => {
+const Specialties: React.FC = () => {
   return (
     <section id="specialties" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

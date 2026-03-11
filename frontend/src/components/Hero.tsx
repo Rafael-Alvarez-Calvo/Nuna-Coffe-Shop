@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Star, Phone, Map } from 'lucide-react';
 import { businessInfo } from '../data/mock';
 
-const Hero = () => {
-  const scrollToSection = (id) => {
+const Hero: React.FC = () => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

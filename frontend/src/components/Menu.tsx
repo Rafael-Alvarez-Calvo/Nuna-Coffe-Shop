@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { menu } from '../data/mock';
 
-const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState('cafe');
+type MenuCategory = 'cafe' | 'bebidas' | 'brunch';
 
-  const categories = [
+const Menu: React.FC = () => {
+  const [activeCategory, setActiveCategory] = useState<MenuCategory>('cafe');
+
+  const categories: Array<{ id: MenuCategory; name: string; icon: string }> = [
     { id: 'cafe', name: 'Café', icon: '☕' },
     { id: 'bebidas', name: 'Bebidas', icon: '🍵' },
     { id: 'brunch', name: 'Brunch', icon: '🥐' }

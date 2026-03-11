@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Phone, Clock, Instagram } from 'lucide-react';
 import { businessInfo } from '../data/mock';
 
-const Footer = () => {
-  const scrollToSection = (id) => {
+const Footer: React.FC = () => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

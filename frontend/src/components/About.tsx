@@ -1,14 +1,15 @@
 import React from 'react';
 import { Coffee, Croissant, Leaf } from 'lucide-react';
 import { businessInfo, values } from '../data/mock';
+import { Value } from '../types';
 
-const iconMap = {
+const iconMap: Record<string, React.ComponentType<any>> = {
   Coffee: Coffee,
   Croissant: Croissant,
   Leaf: Leaf
 };
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <section id="about" className="py-20 bg-[#F8F6F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

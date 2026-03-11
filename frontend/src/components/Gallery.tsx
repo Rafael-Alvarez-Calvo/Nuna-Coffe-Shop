@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { gallery } from '../data/mock';
+import { GalleryImage } from '../types';
 
-const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const Gallery: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
   return (
     <section id="gallery" className="py-20 bg-white">

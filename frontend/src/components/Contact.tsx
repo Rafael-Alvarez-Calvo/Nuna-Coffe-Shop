@@ -1,32 +1,37 @@
 import React, { useState } from 'react';
 import { Mail, User, MessageSquare, Send } from 'lucide-react';
 import { toast } from 'sonner';
+import { contactService } from '../services';
+import { ContactFormData } from '../types';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock submission - will be connected to backend later
-    setTimeout(() => {
-      toast.success('¡Mensaje enviado! Te contactaremos pronto.');
+    try {
+      const response = await contactService.sendMessage(formData);
+      toast.success(response.message);
       setFormData({ name: '', email: '', message: '' });
+    } catch (error: any) {
+      toast.error(error.response?.data?.message || 'Error al enviar el mensaje');
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

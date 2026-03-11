@@ -2,7 +2,7 @@ import React from 'react';
 import { Star } from 'lucide-react';
 import { reviews, businessInfo } from '../data/mock';
 
-const Reviews = () => {
+const Reviews: React.FC = () => {
   return (
     <section id="reviews" className="py-20 bg-[#F8F6F2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

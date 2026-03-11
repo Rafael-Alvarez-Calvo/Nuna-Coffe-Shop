@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import { businessInfo } from '../data/mock';
 
-const Location = () => {
+const Location: React.FC = () => {
   return (
     <section id="location" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
